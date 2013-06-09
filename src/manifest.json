@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+
+  "name": "PerfTiming Exporter",
+  "description": "This extension exports performance timing information.",
+  "version": "0.1",
+
+  "background": {
+    "scripts": ["background.js"]
+    },
+
+  "content_scripts": [{
+      "matches": ["*://*/*"],
+      "js": ["timer.js"]
+  }],
+
+  "permissions": [
+    "tabs",
+    "http://*/*",
+    "https://*/*",
+    "unlimitedStorage"
+  ]
+}
