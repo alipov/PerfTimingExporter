@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "PerfTiming Exporter",
-  "description": "This extension exports performance timing information.",
+  "name": "Performance Exporter",
+  "description": "This extension exports performance information.",
   "version": "0.1",
 
   "background": {
