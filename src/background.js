@@ -1,10 +1,6 @@
-  var fileSystem = null;
-  var logFileWriter = null;
+   var logFileWriter = null;
 
   function initFs(fs) {
-
-  	fileSystem = fs;
-  	//console.log("in initFs");
 
     	fs.root.getFile('logFileForChrome.txt', {create: true}, function(fileEntry) {
 
@@ -59,16 +55,14 @@
   chrome.runtime.onMessage.addListener(
     function(t, sender, sendResponse) {
 
-    	// getSelected is async, according to:
+    	// query is async, according to:
     	chrome.tabs.query({active: true, lastFocusedWindow: true}, function(tabs) {
     	var tab = tabs[0];
   		var tabUrl = tab.url;
 
       if (t.loadEventEnd > 0) {
-          var now = new Date();
 
           var record = String("\n");
-          record += now.toLocaleDateString() + "-" + now.toLocaleTimeString() + " ";
           record += tabUrl + " ";
           record += t.navigationStart + " ";
           record += t.unloadEventStart + " ";
@@ -94,7 +88,6 @@
 
       		var blob = new Blob([record], {type: 'text/plain'});
       		logFileWriter.seek(logFileWriter.length);
-
       		logFileWriter.write(blob);
         }
   	});
